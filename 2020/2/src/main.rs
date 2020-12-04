@@ -1,8 +1,6 @@
 use std::env;
 use std::fs;
 
-
-
 fn main() {
     println!("Reading input");
 
@@ -11,8 +9,7 @@ fn main() {
     let mut answer2 = 0;
 
     // Part1
-    for input in contents.lines()
-    {
+    for input in contents.lines() {
         println!("Input: {}", input);
         let split: Vec<&str> = input.split(" ").collect();
 
@@ -30,28 +27,23 @@ fn main() {
         println!("Target char: {}", character);
 
         let mut count = 0;
-        for c in split[2].chars()
-        {
-            if (c == character)
-            {
+        for c in split[2].chars() {
+            if (c == character) {
                 count += 1;
             }
         }
 
-        if (count >= min && count <= max)
-        {
+        if (count >= min && count <= max) {
             answer1 += 1;
         }
 
-        let first_char = split[2].chars().nth(min-1).unwrap() == character;
-        let second_char = match split[2].chars().nth(max-1)
-        {
+        let first_char = split[2].chars().nth(min - 1).unwrap() == character;
+        let second_char = match split[2].chars().nth(max - 1) {
             Some(c2) => c2 == character,
             None => false,
         };
-        
-        if (first_char ^ second_char)
-        {
+
+        if (first_char ^ second_char) {
             answer2 += 1;
         }
     }
